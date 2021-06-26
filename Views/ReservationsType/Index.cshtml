@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<reservation_system.Models.ReservationType>
+
+@{
+   // ViewData["Title"] = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Type details
+        <a asp-action="AddType" class="btn btn-info pull-right fa fa-plus">Add New</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Nombre de Place</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+          
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr>
+
+                        <td>@item.type</td>
+                        <td>@item.nbrPlace</td>
+                        <td>
+                            <a asp-action="UpdateType" asp-route-id="@item.id" class="btn btn-success pull-right fa fa-edit">Update</a>
+
+                            <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-danger pull-right fa fa-trash">Delete</a>
+                        </td>
+
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

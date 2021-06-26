@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/Identity" Path="/root/.nuget/fallbackpackages3/microsoft.aspnetcore.identity.ui/5.0.4/staticwebassets/V4/" />
+  <ContentRoot BasePath="_content/NToastNotify" Path="/root/.nuget/fallbackpackages3/ntoastnotify/7.0.0/staticwebassets/" />
+</StaticWebAssets>

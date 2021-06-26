@@ -1,0 +1,82 @@
+﻿@model IEnumerable<reservation_system.Models.ReservationViewModel>
+
+@{ ViewData["Title"] = "Demain"; }
+
+<h1>Réservations de Demain</h1>
+
+<div>
+    <a asp-action="Index" class="btn">Toute les réservations de demain</a>
+    <a asp-action="pending" class="btn">les réservations en attente</a>
+
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Classe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Lname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Classe)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Type.type)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+
+
+    <td>
+        <a class="btn btn-primary" asp-action="Confirmer" asp-route-id="@item.id">Confirmer</a>
+        <a class="btn btn-danger" asp-action="Rejected" asp-route-id="@item.id">Refuser</a>
+
+    </td>
+</tr>
+       }
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

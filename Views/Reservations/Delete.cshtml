@@ -1,0 +1,33 @@
+﻿@model reservation_system.Models.Reservation
+
+<h3>Vous êtes sûr de vouloir supprimer cette réservation ?</h3>
+<div>
+    <h4>Supprimer la reservation</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+   
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.TypeReservation)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.TypeReservation)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+    </form>
+</div>

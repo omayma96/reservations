@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Admin") && User.IsInRole("Student") && User.IsInRole("Staff"))
+    {
+        <div>
+            <a asp-action="Create" asp-controller="Reservations" class="btn btn-success">Réserver</a>
+        </div> }
+    else if (User.IsInRole("Student"))
+    {
+        <div>
+            <a asp-action="Create" asp-controller="Reservations" class="btn btn-info">Réserver</a>
+        </div> }
+    else if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+    {
+        <div>
+            <a asp-action="Demain" asp-controller="Reservations" class="btn btn-info">Réservation de demain</a>
+        </div> }
+    else if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+    {
+        <div>
+            <a asp-action="today" asp-controller="Reservations" class="btn btn-light">Réservation d'aujourd'hui</a>
+        </div> }
+    else
+    {
+        <div>
+            <a asp-action="Create" asp-controller="Reservations" class="btn btn-success">Réserver</a>
+        </div>}
+}

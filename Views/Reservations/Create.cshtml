@@ -1,0 +1,52 @@
+﻿@model reservation_system.Models.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Create Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" value="@DateTime.Now.AddDays(1).ToString("s")" name="date" readonly />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" hidden>
+                <label asp-for="Status" class="control-label"></label>
+                <input value="pending" asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TypeReservation" class="control-label"></label>
+                <select asp-for="TypeReservation.type" class="browser-default control-label custom-select">
+                    <option value="">Choisir un créneau</option>
+                    @if (DateTime.Now.AddDays(1).DayOfWeek == DayOfWeek.Saturday || DateTime.Now.AddDays(1).DayOfWeek == DayOfWeek.Sunday)
+                    {
+                <option value="Week-End">Week-End</option> }
+                            else
+                            {
+                <option value="9h à 17h">9h à 17h</option>
+                                <option value="17h à 20h">17h à 20h</option>}
+                </select>
+                <span asp-validation-for="reservationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Réserver" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="StudentIndex">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

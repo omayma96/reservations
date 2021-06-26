@@ -1,0 +1,251 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- Font Icon -->
+<link rel="stylesheet" href="~/fonts/material-icon/css/material-design-iconic-font.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+
+<!-- Main css -->
+@*<link rel="stylesheet" href="~/css/style.css">*@
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+
+
+
+
+
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<img class="wave" src="~/images/wave.png">
+<div class="container1">
+    <div class="img">
+        <img src="~/images/bg.png">
+    </div>
+    <div class="login-content">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="POST">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <img src="~/images/avatar.png">
+            <h2 class="title">Welcome</h2>
+
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <input asp-for="Input.FName" type="text" name="FName" id="name" placeholder="First Name" />
+                    <span asp-validation-for="Input.FName" class="text-danger"></span>
+                </div>
+
+            </div>
+
+
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <input asp-for="Input.LName" type="text" name="LName" id="name" placeholder="Last Name" />
+                    <span asp-validation-for="Input.LName" class="text-danger"></span>
+                </div>
+
+            </div>
+
+
+            <div class="input-div one">
+                <div class="i">
+                    <i class="zmdi zmdi-email"></i>
+                </div>
+                <div class="div">
+                    <input asp-for="Input.Email" type="email" name="email" id="email" placeholder="Your Email" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="input-div one">
+                <div class="i">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="div">
+                    <input asp-for="Input.Classe" type="text" name="Classe" id="name" placeholder="Classe" />
+                    <span asp-validation-for="Input.Classe" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <input asp-for="Input.Password" type="password" name="Password" id="pass" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+                </div>
+            </div>
+
+            <div class="input-div pass">
+                <div class="i">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="div">
+                    <input asp-for="Input.ConfirmPassword" type="password" name="ConfirmPassword" id="re_pass" placeholder="Repeat your password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+                </div>
+            </div>
+
+@*
+            <div class="btn">
+                <input type="submit" name="signin" id="signin" class="btns" value="Log in" />
+            </div>*@
+
+
+            <div class="btn">
+                <input type="submit" name="signup" id="signup" class="btns" value="Register" />
+            </div>
+
+            <div class="social-login">
+                <span class="social-label">Or login with</span>
+                <ul class="socials">
+                    <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li><a href="#"><i class=" zmdi zmdi-google"></i></a></li>
+                </ul>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+
+@*
+
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+
+                <form asp-route-returnUrl="@Model.ReturnUrl" method="POST" class="register-form" id="register-form">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Input.FName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input asp-for="Input.FName" type="text" name="FName" id="name" placeholder="First Name" />
+                        <span asp-validation-for="Input.FName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.LName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input asp-for="Input.LName" type="text" name="LName" id="name" placeholder="Last Name" />
+                        <span asp-validation-for="Input.LName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Classe"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        <input asp-for="Input.Classe" type="text" name="Classe" id="name" placeholder="Classe" />
+                        <span asp-validation-for="Input.Classe" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label asp-for="Input.Email"><i class="zmdi zmdi-email"></i></label>
+                        <input asp-for="Input.Email" type="email" name="email" id="email" placeholder="Your Email" />
+
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password">
+                            <i class="zmdi zmdi-lock"></i>
+                        </label>
+                        <input asp-for="Input.Password" type="password" name="Password" id="pass" placeholder="Password" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Input.ConfirmPassword">
+                            <i class="zmdi zmdi-lock"></i>
+                        </label>
+
+                        <input asp-for="Input.ConfirmPassword" type="password" name="ConfirmPassword" id="re_pass" placeholder="Repeat your password" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                    </div>
+                </form>
+            </div>
+            <div class="signup-image">
+                <figure><img src="~/images/signup-image.jpg" alt="sing up image"></figure>
+                <a href="/Identity/Account/login" class="signup-image-link">I am already member</a>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+
+@*<h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h4>Create a new account.</h4>
+                <hr />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <div class="col-md-6 col-md-offset-2">
+            <section>
+                <h4>Use another service to register.</h4>
+                <hr />
+                @{
+                    if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                    {
+                        <div>
+                            <p>
+                                There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                                for details on setting up this ASP.NET application to support logging in via external services.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
+                                    {
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                }
+            </section>
+        </div>
+    </div>*@
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
