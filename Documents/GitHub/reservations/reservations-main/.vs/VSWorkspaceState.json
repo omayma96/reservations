@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\obj",
+    "\\obj\\Debug",
+    "\\obj\\Debug\\net5.0",
+    "\\obj\\Debug\\net5.0\\Razor",
+    "\\obj\\Debug\\net5.0\\Razor\\Views",
+    "\\obj\\Debug\\net5.0\\Razor\\Views\\Shared",
+    "\\Properties",
+    "\\Views",
+    "\\Views\\ReservationsType"
+  ],
+  "SelectedNode": "\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+  "PreviewInSolutionExplorer": false
+}

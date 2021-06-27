@@ -1,0 +1,111 @@
+﻿@model IEnumerable<reservation_system.Models.ReservationViewModel>
+@using Microsoft.AspNetCore.Identity
+
+@{
+    ViewData["Title"] = "Index";
+
+    var user = new IdentityUser();
+    var role = new IdentityRole();
+}
+
+<h1>Index</h1>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Student"))
+        {
+            <a asp-action="Create">Create New</a>
+        }
+    }
+</p>
+
+
+
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lname)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Classe)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>Action</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Lname)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Classe)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Date)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Type.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.Status)
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Student"))
+                        {
+                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            <div class="input-group mb-3">
+                                <a class="btn btn-primary" asp-action="Confirmer" asp-route-id="@item.id">Confirm</a>
+                                <div class="input-group-append">
+                                    <a class="btn btn-danger" asp-action="Rejected" asp-route-id="@item.id">Reject</a>
+                                </div>
+
+                            </div>
+
+                        }
+                        else
+                        {
+                            <a hidden class="btn btn-warning" asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                            <a hidden class="btn btn-primary" asp-action="Confirmer" asp-route-id="@item.id">Confirm</a>
+                            <a hidden class="btn btn-danger" asp-action="Rejected" asp-route-id="@item.id">Reject</a>
+                        }
+
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

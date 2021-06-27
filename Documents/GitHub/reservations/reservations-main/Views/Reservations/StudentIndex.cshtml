@@ -1,0 +1,58 @@
+﻿@model IEnumerable<reservation_system.Models.ReservationViewModel>
+
+@{ ViewData["Title"] = "StudentIndex"; }
+
+<h4>Liste reservation</h4>
+<div class="card-header">
+    <i class="fas fa-table"></i>
+    <a asp-action="Create" class="btn btn-info pull-right fa fa-plus">Add New</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Type)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+
+        <td>
+            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.id">Modifier</a>
+            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.id">Supprimer</a>
+        </td>
+    </tr>
+}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

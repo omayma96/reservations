@@ -1,0 +1,84 @@
+﻿@model IEnumerable<reservation_system.Models.ReservationViewModel>
+
+@{ ViewData["Title"] = "Ajourd'hui"; }
+
+<h1>Réservations d'aujourd'hui</h1>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Classe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.absentcount)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type.type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.absentcount)
+                </td>
+
+
+
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                        {
+                                    <a class="btn btn-success" asp-action="presence" asp-route-id="@item.id">present</a>
+                                    <a class="btn btn-outline-danger" asp-action="absence" asp-route-id="@item.id">absent</a>
+                                    <a class="btn btn-danger" asp-action="Bloque" asp-route-id="@item.id">Bloquer</a>}
+
+
+
+                    }
+                </td>>
+            </tr>
+       }
+        </tbody>
+    </table>
+</div>
